@@ -50,3 +50,14 @@ scale.boundaries <- function(val, v.min, v.max, newmin, newmax){
   coe <- (newmax - newmin)/(v.max-v.min)
   return((val-v.min)*coe + newmin)
 }
+  
+# Génère des données 
+n_rows <- 5000
+n_cols <- 100
+
+df <- data.frame(
+  matrix(runif(n_rows*n_cols), nrow = n_rows, ncol = n_cols))
+
+df$target <- sample(c(0,1), size = n_rows, replace = T, prob = c(0.7, 0.3))
+
+write.csv(file = 'random_data.csv', x = df, row.names = F)
